@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="Portal privat untuk pengumpulan dan pengiriman dokumen tim.">
+  <title>TEAMDROP — Private Team Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar shell">
+    <a class="brand" href="/" aria-label="TeamDrop beranda">
+      <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 5.5h10l6 6v14A2.5 2.5 0 0 1 21.5 28h-13A2.5 2.5 0 0 1 6 25.5v-17A3 3 0 0 1 9 5.5Z"/><path d="M18 5.8v6.4h6.2M11 18h10M11 22h7"/></svg></span>
+      <span class="brand-word">TEAM<span>DROP</span><small>PRIVATE WORKSPACE</small></span>
+    </a>
+    <div class="topbar-right">
+      <span class="secure-label"><span class="secure-dot"></span> PRIVATE UPLOAD PORTAL</span>
+      <a class="admin-link" href="/admin">Admin <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main class="shell main-layout">
+    <section class="hero-copy">
+      <div class="eyebrow"><span class="eyebrow-line"></span> ONE PLACE. EVERY DOCUMENT.</div>
+      <h1>Dokumen tim,<br><span>terkumpul rapi.</span></h1>
+      <p class="hero-description">Kirim file pekerjaan langsung melalui portal ini. Dokumen akan diteruskan ke pengelola tanpa perlu bertukar nomor WhatsApp pribadi.</p>
+      <div class="hero-points">
+        <div class="hero-point"><span class="point-icon">01</span><span><b>Unggah dengan mudah</b><small>PDF, Word, Excel, dan lainnya.</small></span></div>
+        <div class="hero-point"><span class="point-icon">02</span><span><b>Kontak tetap privat</b><small>Nomor WhatsApp tujuan tidak ditampilkan.</small></span></div>
+        <div class="hero-point"><span class="point-icon">03</span><span><b>Status pengiriman tercatat</b><small>File tersimpan sebagai cadangan di portal.</small></span></div>
+      </div>
+      <div class="hero-footer"><span class="footer-shield">✦</span> WORKFLOW DOKUMEN INTERNAL <span class="footer-separator">/</span> ACCESS CONTROLLED</div>
+    </section>
+
+    <section class="upload-panel" aria-labelledby="upload-heading">
+      <div class="panel-topline"><span class="panel-kicker">DOCUMENT INTAKE</span><span class="panel-step">01 <i>/</i> 01</span></div>
+      <div class="panel-heading-row">
+        <div>
+          <h2 id="upload-heading">Kirim dokumen</h2>
+          <p>Lengkapi detail berikut untuk mengirim file ke pengelola.</p>
+        </div>
+        <div class="upload-symbol"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 21V5m0 0-6 6m6-6 6 6M6 20v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5"/></svg></div>
+      </div>
+
+      <form id="upload-form" class="upload-form" enctype="multipart/form-data">
+        <div class="field-grid">
+          <label class="field"><span>Nama pengirim <b>*</b></span><input name="senderName" type="text" maxlength="80" placeholder="Nama lengkap kamu" autocomplete="name" required></label>
+          <label class="field"><span>Nama tim / divisi <b>*</b></span><input name="teamName" type="text" maxlength="80" placeholder="Contoh: Tim Operasional" required></label>
+        </div>
+        <label class="field"><span>Kode akses tim <b>*</b></span><div class="input-with-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></svg><input name="accessCode" type="password" placeholder="Masukkan kode akses dari admin" autocomplete="off" required></div><small class="field-help">Kode ini hanya dibagikan kepada anggota tim.</small></label>
+        <label class="field"><span>Catatan <small>(opsional)</small></span><textarea name="note" rows="2" maxlength="500" placeholder="Contoh: Laporan mingguan, tanggal 30 Oktober 2026"></textarea></label>
+
+        <div class="field file-field">
+          <span class="field-label">Lampiran dokumen <b>*</b></span>
+          <label class="drop-zone" id="drop-zone" for="file-input">
+            <input id="file-input" name="file" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.odt,.ods,.odp" required>
+            <span class="drop-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 21V5m0 0-6 6m6-6 6 6M6 20v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5"/></svg></span>
+            <span class="drop-copy"><b id="file-title">Pilih file atau tarik ke sini</b><small id="file-subtitle">PDF, DOCX, XLSX, PPTX, TXT, CSV · Maks. <span id="max-size">50</span> MB</small></span>
+            <span class="browse-button">Pilih file</span>
+          </label>
+          <div id="file-selected" class="file-selected" hidden><span class="file-chip">DOC</span><span id="selected-name"></span><button type="button" id="remove-file" aria-label="Hapus file pilihan">×</button></div>
+        </div>
+
+        <div id="upload-error" class="notice notice-error" role="alert" hidden></div>
+        <div id="upload-success" class="result-card" role="status" hidden>
+          <span class="result-check">✓</span><div><b id="success-title">Dokumen diterima</b><p id="success-text">File berhasil diproses.</p><small id="success-id"></small></div>
+        </div>
+        <div class="submit-row">
+          <div class="privacy-note"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2 3.5 4.5v4.8c0 4.1 2.8 6.8 6.5 8.2 3.7-1.4 6.5-4.1 6.5-8.2V4.5L10 2Z"/><path d="m7 9.8 2 2 4-4"/></svg><span>File dikirim secara privat<br><small>Hanya dapat diakses pengelola.</small></span></div>
+          <button id="submit-button" class="submit-button" type="submit"><span>Kirim dokumen</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></button>
+        </div>
+      </form>
+      <div class="panel-bottom"><span><i class="status-light"></i> SYSTEM OPERATIONAL</span><span>TEAMDROP <b>·</b> V1.0</span></div>
+    </section>
+  </main>
+
+  <footer class="shell page-footer"><span>© <span id="year"></span> TEAMDROP WORKSPACE</span><span>BUILT FOR BETTER TEAMWORK</span></footer>
+</body>
+</html>

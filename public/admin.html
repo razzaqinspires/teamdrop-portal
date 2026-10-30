@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>Admin — TEAMDROP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/admin.js" defer></script>
+</head>
+<body class="admin-page">
+  <header class="admin-header admin-shell">
+    <a class="brand" href="/">
+      <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 5.5h10l6 6v14A2.5 2.5 0 0 1 21.5 28h-13A2.5 2.5 0 0 1 6 25.5v-17A3 3 0 0 1 9 5.5Z"/><path d="M18 5.8v6.4h6.2M11 18h10M11 22h7"/></svg></span>
+      <span class="brand-word">TEAM<span>DROP</span><small>ADMIN CONSOLE</small></span>
+    </a>
+    <a class="admin-link" href="/">← Kembali ke portal</a>
+  </header>
+  <main class="admin-shell">
+    <section id="login-view" class="login-card">
+      <div class="eyebrow"><span class="eyebrow-line"></span> RESTRICTED AREA</div>
+      <h1>Admin sign in</h1>
+      <p>Masuk untuk melihat dokumen tim, mengunduh file, memeriksa status WhatsApp, dan mencoba ulang pengiriman.</p>
+      <form id="login-form">
+        <label class="field"><span>Username</span><input name="username" type="text" autocomplete="username" required></label>
+        <label class="field"><span>Password</span><input name="password" type="password" autocomplete="current-password" required></label>
+        <div id="login-error" class="admin-error hidden" role="alert"></div>
+        <button class="admin-button" type="submit">Masuk ke dashboard →</button>
+      </form>
+    </section>
+
+    <section id="dashboard-view" class="hidden">
+      <div class="admin-heading">
+        <div class="eyebrow"><span class="eyebrow-line"></span> PRIVATE WORKSPACE</div>
+        <h1>Dokumen masuk</h1>
+        <p>Pantau semua kiriman tim dalam satu tempat. Nomor WhatsApp tujuan hanya tersimpan di konfigurasi server.</p>
+      </div>
+      <div class="admin-layout">
+        <div class="stats-grid">
+          <div class="stat-card"><span>Total dokumen</span><strong id="stat-total">0</strong><small>Semua kiriman tersimpan</small></div>
+          <div class="stat-card"><span>Berhasil ke WhatsApp</span><strong id="stat-sent">0</strong><small>Status diteruskan oleh Whiskay Bot</small></div>
+          <div class="stat-card"><span>Belum terkirim</span><strong id="stat-pending">0</strong><small>Menunggu konfigurasi / tindak lanjut</small></div>
+          <div class="stat-card"><span>Gagal</span><strong id="stat-failed">0</strong><small>Perlu diperiksa</small></div>
+        </div>
+        <section class="table-card">
+          <div class="table-toolbar">
+            <div><h2>Daftar pengiriman</h2><p>File otomatis dihapus sesuai masa retensi server.</p></div>
+            <div class="toolbar-actions"><button class="ghost-button" id="refresh-button" type="button">↻ Refresh</button><button class="ghost-button" id="logout-button" type="button">Keluar</button></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>DOKUMEN</th><th>PENGIRIM / TIM</th><th>TANGGAL</th><th>STATUS WA</th><th>AKSI</th></tr></thead>
+              <tbody id="submissions-body"><tr><td colspan="5"><div class="empty-state">Memuat dokumen…</div></td></tr></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="admin-shell admin-footer"><span>TEAMDROP ADMIN CONSOLE</span><span>PRIVATE · ACCESS CONTROLLED</span></footer>
+</body>
+</html>
